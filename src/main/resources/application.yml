@@ -1,0 +1,9 @@
+spring:
+  liquibase:
+    change-log: "classpath:db/changelog/notification-changelog.xml"
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/notification_db
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
