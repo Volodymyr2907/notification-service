@@ -7,21 +7,21 @@ import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @Transactional
 @RequiredArgsConstructor
-public class NotificationServiceImpl {
+public class NotificationProcessor {
 
     private final NotificationRepository notificationRepository;
 
     @RabbitListener(queues = "${spring.rabbitmq.template.default-receive-queue}")
-    public void saveNotificationFromQueue(OrderEvent object) {
+    public void saveNotificationFromQueue(OrderEvent event) {
 
         Notification notification = new Notification();
-        notification.setMessage(object.getMessage());
-        notification.setOrderId(object.getOrderId());
+        notification.setMessage(event.getMessage());
+        notification.setOrderId(event.getOrderId());
         notification.setDate(LocalDateTime.now());
 
         notificationRepository.save(notification);
