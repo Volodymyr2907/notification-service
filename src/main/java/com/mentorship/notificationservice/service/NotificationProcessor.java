@@ -19,8 +19,10 @@ public class NotificationProcessor {
     @RabbitListener(queues = "${spring.rabbitmq.template.default-receive-queue}")
     public void saveNotificationFromQueue(OrderEvent event) {
 
+        String orderStatusName = event.getOrderStatus().name();
+
         Notification notification = new Notification();
-        notification.setMessage(event.getMessage());
+        notification.setMessage(String.format("Processed order with status %s", orderStatusName));
         notification.setOrderId(event.getOrderId());
         notification.setDate(LocalDateTime.now());
 
