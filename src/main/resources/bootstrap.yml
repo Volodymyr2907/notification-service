@@ -3,7 +3,3 @@ spring:
     name: notification-client
 server:
   port: 8385
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
