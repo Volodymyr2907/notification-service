@@ -7,7 +7,7 @@ Spring boot application that provides message broker (rabbitMQ) for saving order
 
 1. login to Mysql server (change credentials in [application.yml](src/main/resources/application.yml))
 2. create DB schema named **notification_db**
-3. login to [rabbitMQ](http://localhost:15672/) message broker  (default credentials for)
+3. login to [rabbitMQ](http://localhost:15672/) message broker  (default rabbitMQ credentials)
 4. create queue named **vine.queue**
 
 ## Service Requirements
